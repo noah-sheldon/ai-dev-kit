@@ -29,11 +29,12 @@ Coordinated parallel development with **dynamic micro-task breakdown** and **on-
             ↓
   [Repo Scanner] → Read entire repo, map surfaces, identify all affected areas
             ↓
-  [Web Research Pipeline] → Search docs, blogs, RFCs, GitHub issues, Stack Overflow
-    ├─ [Web Researcher Agent]     → Search official docs, API refs, release notes
-    ├─ [Community Researcher]     → Search Stack Overflow, GitHub issues, Reddit, blogs
-    ├─ [Competitive Analyst]      → Compare alternatives, benchmarks, trade-offs
-    └─ [Security Scanner]         → Search CVE databases, advisories, dependency audits
+  [Web Research Pipeline] → Search docs, blogs, RFCs, GitHub issues, Stack Overflow, Reddit
+    ├─ [Web Researcher Agent]       → Search official docs, API refs, release notes
+    ├─ [Community Researcher]       → Search Stack Overflow, GitHub issues, Reddit, blogs
+    ├─ [Reddit Researcher Agent]    → Deep Reddit analysis: user experiences, war stories, sentiment, consensus
+    ├─ [Competitive Analyst]        → Compare alternatives, benchmarks, trade-offs
+    └─ [Security Scanner]           → Search CVE databases, advisories, dependency audits
             ↓
   [Micro-Task Decomposer] → Break feature into atomic micro-tasks
     Each micro-task:
@@ -178,7 +179,7 @@ After the repo scan, the **web research pipeline** runs in parallel to gather ex
 ### Parallel Research Agents
 
 ```
-[Web Research Pipeline] — 4 agents running in parallel:
+[Web Research Pipeline] — 5 agents running in parallel:
 
   1. [Web Researcher Agent]
      Sources: Official docs, API references, release notes, changelogs
@@ -186,16 +187,22 @@ After the repo scan, the **web research pipeline** runs in parallel to gather ex
      Outputs: .workflow/<feature-name>/research/web-research.md
 
   2. [Community Researcher Agent]
-     Sources: Stack Overflow, GitHub issues, Reddit, dev blogs, Hacker News
+     Sources: Stack Overflow, GitHub issues, dev blogs, Hacker News
      Tools: web_search, web_fetch
      Outputs: .workflow/<feature-name>/research/community-research.md
 
-  3. [Competitive Analyst Agent]
+  3. [Reddit Researcher Agent]
+     Sources: Reddit (r/programming, r/Python, r/typescript, r/webdev, framework-specific subs)
+     Tools: web_search, web_fetch
+     Outputs: .workflow/<feature-name>/research/reddit-research.md
+     Focus: Real user experiences, production war stories, sentiment, consensus
+
+  4. [Competitive Analyst Agent]
      Sources: Alternative implementations, benchmarks, trade-off analyses
      Tools: web_search, web_fetch
      Outputs: .workflow/<feature-name>/research/competitive-analysis.md
 
-  4. [Security Scanner Agent]
+  5. [Security Scanner Agent]
      Sources: CVE databases, npm audit, pip-audit, GitHub advisories
      Tools: web_search, Bash (npm audit, pip-audit, trivy)
      Outputs: .workflow/<feature-name>/research/security-audit.md
@@ -231,7 +238,7 @@ web_researcher_config:
 
 ### Community Researcher Agent
 
-The **Community Researcher Agent** searches for real-world experience and edge cases:
+The **Community Researcher Agent** searches for real-world experience outside Reddit (which has its own dedicated agent):
 
 ```yaml
 community_researcher_config:
@@ -246,11 +253,48 @@ community_researcher_config:
     - Migration experiences
     - Production war stories
     - Alternative approaches the team didn't consider
+  exclude_sources:
+    - reddit.com  # handled by dedicated Reddit Researcher Agent
   output_format:
     - Problem: What issue people encountered
     - Solution: How they fixed it
     - Source: URL (Stack Overflow, GitHub issue, blog)
     - Consensus: Do multiple sources agree?
+```
+
+### Reddit Researcher Agent
+
+The **Reddit Researcher Agent** does deep analysis of Reddit threads for ground-level practitioner knowledge:
+
+```yaml
+reddit_researcher_config:
+  search_queries:
+    - "site:reddit.com <framework> <feature> experience production"
+    - "site:reddit.com <library> real world review"
+    - "site:reddit.com <tool-a> vs <tool-b> comparison"
+    - "site:reddit.com <framework> gotcha pitfall regret"
+    - "site:reddit.com <technology> worth it <year>"
+  target_subreddits:
+    - r/programming
+    - r/Python
+    - r/typescript
+    - r/webdev
+    - r/devops
+    - r/machinelearning
+    - Framework-specific subs (r/FastAPI, r/reactjs, r/node, r/PostgreSQL)
+  analysis_dimensions:
+    - Sentiment: positive / neutral / negative
+    - Consensus: strong agreement / mixed / strong disagreement
+    - Production evidence: yes/no (did commenter deploy this at scale?)
+    - Recency: within 12 months / older (flag if outdated)
+    - Severity: data loss / security / performance / inconvenience
+  output_format:
+    - Summary: 2-3 sentence overview of community sentiment
+    - Key findings with direct quotes from top comments
+    - Gotchas table with severity ratings
+    - Community consensus table (Do it / Don't / Depends)
+    - Notable dissenting opinions
+    - Production war stories
 ```
 
 ### Competitive Analyst Agent
@@ -310,7 +354,12 @@ After all 4 agents complete, their findings are synthesized:
 - <key findings with URLs>
 
 ## Community Knowledge (Community Researcher)
-- <common pitfalls, workarounds, edge cases>
+- <common pitfalls, workarounds, edge cases from Stack Overflow, GitHub, blogs>
+
+## Reddit Sentiment (Reddit Researcher)
+- <real-world experiences, production war stories, community consensus from Reddit>
+- <gotchas with severity ratings>
+- <notable dissenting opinions>
 
 ## Competitive Landscape (Competitive Analyst)
 - <approach comparison, recommendation>
@@ -320,7 +369,7 @@ After all 4 agents complete, their findings are synthesized:
 
 ## Synthesized Recommendation
 Based on all research, the recommended approach is:
-  <approach> because <reasons from all 4 agents>.
+  <approach> because <reasons from all 5 agents>.
 
 ## Risks to Address in Implementation
 - <risk 1> — mitigation: <strategy>
@@ -329,6 +378,7 @@ Based on all research, the recommended approach is:
 ## References
 - [Official docs](URL)
 - [Stack Overflow](URL)
+- [Reddit thread](URL)
 - [Benchmark comparison](URL)
 - [CVE advisory](URL)
 ```
@@ -774,4 +824,13 @@ gh pr merge --squash --delete-branch
 - **deep-research** — in-depth research methodology
 - **exa-search** — neural web search for research
 - **search-first** — search-before-implement pattern
+- **reddit-researcher** — real-world Reddit user experiences and sentiment
 - **multi-agent-project-manager** — coordinating multiple concurrent workflows
+
+## Related Agents
+
+- **reddit-researcher** — deep Reddit analysis for user experiences, war stories, consensus
+- **web-researcher** — official documentation and API reference lookup
+- **community-researcher** — Stack Overflow, GitHub issues, dev blogs
+- **competitive-analyst** — alternative approach comparison and benchmarking
+- **security-scanner** — CVE and dependency audit
