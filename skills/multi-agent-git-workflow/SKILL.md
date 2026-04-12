@@ -24,12 +24,19 @@ Coordinated parallel development using specialized AI agents, Git issue-driven b
 Git Issue #N → [Git Agent Coordinator]
             ↓ Parallel Spawn
   ├─ [Research Agent] → RAG patterns, best practices
-  ├─ [Architecture Agent] → System design, API contracts  
+  ├─ [Architecture Agent] → System design, API contracts
   └─ [Security Agent] → Auth, data privacy, dependency audit
             ↓
   [AI Judge Agent] → Validates against rubric
     ├─ FAIL → Loop back with feedback
     └─ PASS → Proceed
+            ↓
+  [Planning Agent] → Phased implementation plan, branch strategy, file ownership
+            ↓
+  [Human Approval Gate] → Review plan, approve or request changes
+    ├─ REJECT → Loop back to Planning Agent with feedback
+    ├─ REQUEST_CHANGES → Routing to specific agent for revision
+    └─ APPROVE → Proceed (or auto-approve for trivial changes)
             ↓
   [Implementation Plan] → Branch: feat/description
     ├─ [Data Engineer]    → Ingestion, migrations
@@ -226,6 +233,165 @@ VERDICT: FAIL — Security threat coverage below threshold
 FEEDBACK: Add rate limiting specification for cache DoS prevention.
           Define max concurrent cache write operations.
 ```
+
+### 3b. Planning Agent — Phased Implementation Plan
+
+After the AI judge passes, the **Planning Agent** synthesizes all research, architecture, and security outputs into a concrete, phased implementation plan:
+
+```markdown
+# Implementation Plan: Issue #42 — Semantic Cache for RAG
+
+## Summary
+Implement transparent semantic caching using FAISS + Redis to reduce P95 latency
+for repeated queries. No API contract changes — cache is a transparent optimization.
+
+## Phase 1: Foundation (data engineering)
+**Branch:** `feat/issue-42/data`
+**Agent:** data-engineer
+**Files to create:**
+- `src/cache/store.py` — Redis-backed cache store with TTL and LRU eviction
+- `src/cache/schema.py` — CacheEntry dataclass, serialization
+- `tests/unit/test_cache_store.py` — Unit tests for store operations
+**Acceptance criteria:**
+- [ ] Cache entry creation, retrieval, deletion works
+- [ ] TTL expires entries automatically
+- [ ] LRU eviction kicks in at 100K entries
+- [ ] Unit test coverage ≥ 85%
+
+## Phase 2: Core Logic (ML engineering)
+**Branch:** `feat/issue-42/ml`
+**Agent:** ml-engineer
+**Files to create:**
+- `src/cache/semantic_cache.py` — SemanticCache class with FAISS similarity lookup
+- `src/cache/embedding.py` — Query embedding generation
+- `tests/unit/test_semantic_cache.py` — Cache hit/miss, threshold tuning
+**Dependencies:** Phase 1 (cache store)
+**Acceptance criteria:**
+- [ ] Cache hit when query similarity ≥ 0.95
+- [ ] Cache miss for dissimilar queries
+- [ ] P95 lookup latency < 50ms
+- [ ] No regression on RAGAS faithfulness (≥ 0.85)
+
+## Phase 3: Integration (backend)
+**Branch:** `feat/issue-42/backend`
+**Agent:** code-reviewer (also acts as backend integrator)
+**Files to modify:**
+- `src/api/v1/chat.py` — Add cache lookup before RAG chain execution
+- `src/middleware/cache_middleware.py` — Transparent cache layer
+- `tests/integration/test_cache_endpoint.py` — End-to-end cache behavior
+**Dependencies:** Phase 1 + Phase 2
+**Acceptance criteria:**
+- [ ] Cache hit returns cached response with `cache_hit: true` metadata
+- [ ] Cache miss triggers RAG chain and stores result
+- [ ] Error in cache layer does not break the endpoint (graceful degradation)
+- [ ] Response format unchanged for downstream consumers
+
+## Phase 4: Polish (frontend — if applicable)
+**Branch:** `feat/issue-42/frontend`
+**Agent:** ml-engineer (also handles UI indicator)
+**Files to modify:**
+- `src/components/ChatMessage.tsx` — Show cache hit indicator
+**Dependencies:** Phase 3
+**Acceptance criteria:**
+- [ ] Cache hits display a subtle "cached" badge
+- [ ] No visual change for cache misses (existing behavior preserved)
+
+## Merge Order
+1. Phase 1 (data) → merge to main first (no dependencies)
+2. Phase 2 (ml) → merge after Phase 1 (depends on cache store)
+3. Phase 3 (backend) → merge after Phase 2 (depends on SemanticCache)
+4. Phase 4 (frontend) → merge after Phase 3 (depends on API metadata)
+
+## Rollback Strategy
+- Each phase is independently revertible
+- Phase 3 has a feature flag: `ENABLE_SEMANTIC_CACHE=false` disables cache transparently
+- Full rollback: revert all 4 PRs in reverse merge order
+
+## Risk Assessment
+| Risk | Likelihood | Impact | Mitigation |
+|------|-----------|--------|-----------|
+| Cache serves stale responses | Medium | High | TTL + version invalidation |
+| FAISS memory usage grows unbounded | Low | Medium | LRU eviction at 100K entries |
+| Cache layer introduces latency on miss | Low | Medium | Async cache store, non-blocking |
+| Merge conflicts between phases | Medium | Low | Disjoint file sets, rebase strategy |
+```
+
+### 3c. Human Approval Gate
+
+After the Planning Agent produces the phased plan, a **human approval gate** decides whether to proceed:
+
+#### Auto-Approval (No Human Needed)
+
+For **trivial changes**, the workflow proceeds automatically without human review:
+
+```yaml
+# auto-approve criteria
+auto_approve:
+  - files_changed <= 3
+  - no security-sensitive files touched (no auth, secrets, payment, PII)
+  - test coverage maintained or improved
+  - no new external dependencies added
+  - scope is limited to single surface (e.g., documentation, one module)
+```
+
+If all auto-approve criteria are met, skip to **Implementation** immediately.
+
+#### Human Review Required
+
+For **non-trivial changes**, the plan is presented to the human for review:
+
+```
+═══════════════════════════════════════════════════════
+  IMPLEMENTATION PLAN READY FOR REVIEW
+  Issue #42: Add semantic caching to RAG pipeline
+═══════════════════════════════════════════════════════
+
+  4 phases planned:
+    Phase 1: data — Cache store (3 new files)
+    Phase 2: ml   — SemanticCache class (2 new files)
+    Phase 3: backend — API integration (2 modified files)
+    Phase 4: frontend — Cache indicator (1 modified file)
+
+  Merge order: data → ml → backend → frontend
+  Risk: Medium (cache staleness, memory usage)
+  Rollback: Feature flag + per-phase revert
+
+  Review the full plan at: plans/issue-42/implementation-plan.md
+
+  Respond with one of:
+    APPROVE          → Proceed with implementation
+    REJECT           → Cancel this feature, close the issue
+    REQUEST_CHANGES  → Send back with specific feedback
+═══════════════════════════════════════════════════════
+```
+
+#### Approval Responses
+
+| Response | Behavior |
+|---|---|
+| `APPROVE` | Proceed to implementation — spawn agents per phase |
+| `REJECT` | Close the issue, clean up worktrees, log reason |
+| `REQUEST_CHANGES` | Route feedback to the Planning Agent for revision |
+
+**REQUEST_CHANGES feedback examples:**
+
+```
+REQUEST_CHANGES:
+- Phase 2 should not depend on Phase 1 — make SemanticCache self-contained
+- Add a Phase 0: benchmark the current RAG latency as a baseline
+- Missing: metrics dashboard for cache hit rate and latency
+- Security review flagged PII risk — add cache content scrubbing to Phase 1
+```
+
+When `REQUEST_CHANGES` is received, the Planning Agent revises the plan incorporating the feedback and re-submits for approval. This loop continues until the human approves or rejects.
+
+#### Timeout Behavior
+
+If the human does not respond within a configurable timeout (default: 2 hours):
+
+- **During business hours:** Send a reminder notification
+- **After hours:** Queue the plan for review at next business day
+- **Emergency mode (if flagged):** Proceed with implementation but add a `# HUMAN_REVIEW_PENDING` marker to each PR description
 
 ### 4. Branch Coordination with Git Worktrees
 
