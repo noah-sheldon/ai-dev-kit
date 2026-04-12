@@ -1,0 +1,87 @@
+{
+  "name": "ai-dev-kit-codex",
+  "interface": {
+    "displayName": "AI Dev Kit"
+  },
+  "plugins": [
+    {
+      "name": "ai-dev-kit",
+      "source": {
+        "source": "local",
+        "path": "../.."
+      },
+      "description": "Full AI dev kit with 55 skills, 19 agents, hooks, rules, and MCP configs for developer workflows.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Noah Sheldon",
+        "email": "noahsheldon06@gmail.com"
+      },
+      "homepage": "https://noahsheldon.dev",
+      "repository": "https://github.com/noah-sheldon/ai-dev-kit",
+      "license": "MIT",
+      "keywords": ["codex", "agents", "skills", "hooks", "rules", "automation"],
+      "category": "Productivity",
+      "tags": [
+        "agentic-engineering",
+        "api-design",
+        "api-integrations",
+        "architecture-decision-records",
+        "autonomous-agent-harness",
+        "autonomous-loops",
+        "aws-deployment",
+        "aws-devops",
+        "backend-patterns",
+        "ci-pipeline",
+        "claude-api",
+        "code-review",
+        "codebase-onboarding",
+        "coding-standards",
+        "context-prune",
+        "continuous-agent-loop",
+        "data-pipelines",
+        "data-pipelines-ai",
+        "database-migrations",
+        "deep-research",
+        "deployment-patterns",
+        "dmux-workflows",
+        "docker-patterns",
+        "document-processing",
+        "documentation-lookup",
+        "e2e-testing",
+        "eval-harness",
+        "exa-search",
+        "frontend-design",
+        "frontend-patterns",
+        "git-workflow",
+        "github-ops",
+        "hexagonal-architecture",
+        "iterative-retrieval",
+        "langchain-llamaindex",
+        "mcp-server-patterns",
+        "mlops-rag",
+        "mlops-workflow",
+        "multi-agent-git-workflow",
+        "observability-telemetry",
+        "openai-api",
+        "postgres-patterns",
+        "prompt-optimizer",
+        "python-patterns",
+        "python-testing",
+        "pytorch-patterns",
+        "search-first",
+        "security-review",
+        "security-scan",
+        "skill-authoring",
+        "tdd-workflow",
+        "token-budget-advisor",
+        "typescript-patterns",
+        "verification-loop",
+        "wxt-chrome-extension"
+      ],
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      }
+    }
+  ]
+}

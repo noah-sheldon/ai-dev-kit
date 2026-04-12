@@ -1,0 +1,20 @@
+{
+  "github": {
+    "description": "GitHub API access for repository workflows"
+  },
+  "context7": {
+    "description": "Current library and API documentation lookup"
+  },
+  "exa": {
+    "description": "Search-based external research"
+  },
+  "memory": {
+    "description": "Session and context persistence"
+  },
+  "playwright": {
+    "description": "Browser automation and E2E testing"
+  },
+  "sequential-thinking": {
+    "description": "Structured reasoning for complex tasks"
+  }
+}
