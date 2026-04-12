@@ -62,3 +62,13 @@ valid JSON manifests, and a complete production surface.
 - If a model is unavailable, the workspace should fall back to the default model.
 - If a plugin surface looks stale, rerun `npm test` and `node scripts/validate-surface.js`.
 - If you are adapting this repo for another project, start from `docs/examples/project-guidelines-template.md`.
+
+## Docs
+
+- [Catalog](docs/CATALOG.md)
+- [Command-Agent Map](docs/COMMAND-AGENT-MAP.md)
+- [Skill Development Guide](docs/SKILL-DEVELOPMENT-GUIDE.md)
+- [Troubleshooting](docs/TROUBLESHOOTING.md)
+- [Architecture Improvements](docs/ARCHITECTURE-IMPROVEMENTS.md)
+- [Selective Install Design](docs/SELECTIVE-INSTALL-DESIGN.md)
+- [Session Adapter Contract](docs/SESSION-ADAPTER-CONTRACT.md)
