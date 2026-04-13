@@ -10,6 +10,10 @@
   "homepage": "https://noahsheldon.dev",
   "repository": "https://github.com/noah-sheldon/ai-dev-kit",
   "license": "MIT",
+  "skills": "skills/",
+  "agents": "agents/",
+  "commands": "commands/",
+  "hooks": "hooks/hooks.json",
   "keywords": [
     "ai",
     "python",
@@ -34,7 +38,6 @@
     "etl",
     "database",
     "postgres",
-    "mcp",
     "agents",
     "skills",
     "automation",
@@ -95,6 +98,10 @@
     "token-budget-advisor",
     "typescript-patterns",
     "verification-loop",
-    "wxt-chrome-extension"
+    "wxt-chrome-extension",
+    "codebase-report",
+    "technical-debt-report",
+    "backlog-management",
+    "workflow-status"
   ]
 }
