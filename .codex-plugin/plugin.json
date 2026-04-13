@@ -1,7 +1,7 @@
 {
   "name": "ai-dev-kit",
-  "version": "1.0.0",
-  "description": "AI Dev Kit Codex plugin for production-ready developer workflows.",
+  "version": "1.1.0",
+  "description": "AI Dev Kit Codex plugin for production-ready developer workflows with 59 skills and 33 agents.",
   "author": {
     "name": "Noah Sheldon"
   },

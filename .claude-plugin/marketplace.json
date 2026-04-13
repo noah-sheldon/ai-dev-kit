@@ -5,15 +5,15 @@
     "email": "noahsheldon06@gmail.com"
   },
   "metadata": {
-    "description": "Production-ready AI dev workflow scaffold with 55 skills, agents, hooks, and MCP configs.",
-    "version": "1.0.0"
+    "description": "Production-ready AI dev workflow scaffold with 59 skills, 33 agents, hooks, and rules.",
+    "version": "1.1.0"
   },
   "plugins": [
     {
       "name": "ai-dev-kit",
       "source": "./",
-      "description": "Full AI dev kit with 55 skills for Python, TypeScript, ML, infra, and workflow automation.",
-      "version": "1.0.0",
+      "description": "Full AI dev kit with 59 skills, 33 agents, hooks, and rules for professional engineering workflows.",
+      "version": "1.1.0",
       "author": {
         "name": "Noah Sheldon",
         "email": "noahsheldon06@gmail.com"

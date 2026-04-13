@@ -5,7 +5,7 @@
     "email": "noahsheldon06@gmail.com"
   },
   "metadata": {
-    "description": "Production-ready AI dev workflow scaffold with 59 skills, 33 agents, hooks, rules, and MCP configs for Copilot CLI.",
+    "description": "Production-ready AI dev workflow scaffold with 59 skills, 33 agents, hooks, and rules for Copilot CLI.",
     "version": "1.1.0"
   },
   "plugins": [
