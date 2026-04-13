@@ -1,9 +1,9 @@
 # AI Dev Kit
 
-> Production-ready AI dev workflow scaffold with 59 skills, 33 agents, hooks, rules, and MCP configs.
+> Production-ready AI dev workflow scaffold with 59 skills, 33 agents, hooks, and rules.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Platform](https://img.shields.io/badge/platform-Claude%20Code%20%7C%20Codex%20%7C%20OpenCode%20%7C%20Gemini%20%7C%20Copilot%20CLI-lightgrey)](https://noahsheldon.dev)
+[![Platform](https://img.shields.io/badge/platform-Claude%20Code%20%7C%20Codex%20%7C%20OpenCode%20%7C%20Gemini%20%7C%20Copilot%20CLI%20%7C%20Qwen%20Code-lightgrey)](https://noahsheldon.dev)
 [![Skills](https://img.shields.io/badge/skills-59-brightgreen)](./skills/)
 [![Agents](https://img.shields.io/badge/agents-33-blue)](./agents/)
 [![Commands](https://img.shields.io/badge/commands-41-orange)](./commands/)
@@ -14,7 +14,7 @@
 
 AI Dev Kit is a **complete plugin-oriented developer workspace** for AI coding assistants. It ships everything needed to run professional-grade engineering workflows — TDD, code review, security audit, CI/CD, ML pipelines, infrastructure-as-code, code quality analysis, and debt tracking — across Claude Code, Codex, OpenCode, and Gemini CLI.
 
-Think of it as a **system prompt that scales to 59 specialized skills and 33 domain agents**, with lifecycle hooks, automated validation, and MCP tool integrations.
+Think of it as a **system prompt that scales to 59 specialized skills and 33 domain agents**, with lifecycle hooks and automated validation.
 
 ---
 
@@ -56,6 +56,18 @@ Or install directly from the repo:
 copilot plugin install noah-sheldon/ai-dev-kit:.github-copilot
 ```
 
+### Qwen Code
+
+```bash
+qwen extensions install noah-sheldon/ai-dev-kit
+```
+
+Or install locally:
+
+```bash
+qwen extensions install /path/to/ai-dev-kit
+```
+
 ### Manual Install (any harness)
 
 ```bash
@@ -75,7 +87,6 @@ ai-dev-kit/
 ├── rules/               language-specific guidance (common, python, typescript, web)
 ├── manifests/           install manifests for deterministic setup
 ├── schemas/             JSON schemas for validation
-├── mcp-configs/         MCP server configurations
 ├── docs/                architecture, design decisions, troubleshooting
 ├── examples/            reusable templates
 ├── scripts/             install, validate, sync, and template helpers
@@ -186,6 +197,7 @@ Learning: `learn` `learn-eval`
 | **Gemini CLI** | `.gemini/gemini-extension.json` | `.gemini/GEMINI.md` | `gemini extensions link .` |
 | **OpenCode** | `.opencode/opencode.json` | `.opencode/plugins/` (npm) | `npm install opencode-ai-dev-kit` |
 | **Copilot CLI** | `.github-copilot/plugin.json` | `.github-copilot/marketplace.json` | `copilot plugin install noah-sheldon/ai-dev-kit:.github-copilot` |
+| **Qwen Code** | `qwen-extension.json` | `.qwen/marketplace.json` | `qwen extensions install noah-sheldon/ai-dev-kit` |
 | **Cursor** | `.cursor/` | — | Manual context pack |
 
 ---
@@ -215,7 +227,9 @@ Request → Planner → Architect → Domain Agents → AI-Judge → Implementat
 
 ---
 
-## MCP Servers
+## MCP Servers (Optional)
+
+MCP servers are **not bundled** with this kit to avoid corporate network/proxy issues. Add your own MCP servers as needed:
 
 | Server | Purpose |
 |---|---|
@@ -226,14 +240,15 @@ Request → Planner → Architect → Domain Agents → AI-Judge → Implementat
 | `playwright` | Browser automation & E2E testing |
 | `sequential-thinking` | Step-by-step reasoning |
 
+Configure MCP servers in your own `.mcp.json` at the project root.
+
 ---
 
 ## Requirements
 
 - **Claude Code** v2.1+ (hooks auto-load by convention)
-- **Node.js** 18+ (for scripts and validation)
+- **Node.js** 24+ LTS (for scripts and validation)
 - **Git** (for agent coordination and version control)
-- API keys for MCP servers (set via environment variables)
 
 ---
 

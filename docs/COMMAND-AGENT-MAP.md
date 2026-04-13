@@ -33,8 +33,8 @@ Maps every slash command to its primary agent(s) and the skills it draws on.
 | `/resume-session` | `docs-lookup` | `documentation-lookup` |
 | `/save-session` | `docs-lookup` | `documentation-lookup` |
 | `/sessions` | `docs-lookup` | `documentation-lookup` |
-| `/skill-create` | `skill-authorer` | `skill-authoring` |
-| `/skill-health` | `skill-authorer` | `skill-authoring`, `verification-loop` |
+| `/skill-create` | `doc-updater` | `skill-authoring` |
+| `/skill-health` | `doc-updater` | `skill-authoring`, `verification-loop` |
 | `/update-docs` | `doc-updater` | `documentation-lookup` |
 | `/update-codemaps` | `doc-updater` | `documentation-lookup`, `context-prune` |
 | `/launch` | `infra-as-code-specialist` | `deployment-patterns`, `ci-pipeline` |

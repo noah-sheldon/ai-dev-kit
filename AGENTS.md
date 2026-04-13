@@ -107,7 +107,7 @@ Never parallelize when there are dependencies:
 - Use environment variables for API keys and tokens
 - Reference `.env.example` for required variables
 - Never commit `.env` files
-- Use `${CLAUDE_PLUGIN_ROOT}` or `${CLAUDE_PLUGIN_DATA}` in hooks/MCP configs
+- Use `${CLAUDE_PLUGIN_ROOT}` or `${CLAUDE_PLUGIN_DATA}` in hooks configs
 
 ### Escalation Procedure
 
@@ -271,7 +271,7 @@ Types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `ci`
 
 ### Plugin Architecture
 
-The kit uses a **multi-harness plugin model**. Each platform (Claude Code, Codex, OpenCode, Gemini, Copilot CLI) has its own manifest in a dot-prefixed directory, all pointing to the same source content:
+The kit uses a **multi-harness plugin model**. Each platform (Claude Code, Codex, OpenCode, Gemini, Copilot CLI, Qwen Code) has its own manifest, all pointing to the same source content:
 
 ```
 .claude-plugin/    → Claude Code manifest + marketplace
@@ -280,10 +280,14 @@ The kit uses a **multi-harness plugin model**. Each platform (Claude Code, Codex
 .gemini/           → Gemini extension
 .opencode/         → OpenCode config + TypeScript plugin
 .github-copilot/   → Copilot CLI manifest + marketplace
+qwen-extension.json → Qwen Code extension manifest
+.qwen/             → Qwen Code marketplace
 skills/            → Shared skill definitions (single source of truth)
 agents/            → Shared agent definitions
 commands/          → Shared command definitions
 ```
+
+MCP servers are **not bundled** — add your own `.mcp.json` at the project root if needed.
 
 ### Copilot CLI Agent Naming
 
