@@ -12,10 +12,15 @@ test('required files exist', () => {
     'CONTRIBUTING.md',
     'SECURITY.md',
     'LICENSE',
+    'VERSION',
     '.claude-plugin/plugin.json',
+    '.claude-plugin/marketplace.json',
     '.codex-plugin/plugin.json',
+    '.gemini/gemini-extension.json',
     '.opencode/opencode.json',
-    '.mcp.json'
+    '.github-copilot/plugin.json',
+    '.github-copilot/marketplace.json',
+    'qwen-extension.json'
   ];
 
   for (const file of files) {
@@ -24,7 +29,19 @@ test('required files exist', () => {
 });
 
 test('plugin manifests are valid JSON', () => {
-  for (const file of ['.claude-plugin/plugin.json', '.codex-plugin/plugin.json']) {
+  const manifests = [
+    '.claude-plugin/plugin.json',
+    '.claude-plugin/marketplace.json',
+    '.codex-plugin/plugin.json',
+    '.agents/plugins/marketplace.json',
+    '.gemini/gemini-extension.json',
+    '.opencode/opencode.json',
+    '.github-copilot/plugin.json',
+    '.github-copilot/marketplace.json',
+    'qwen-extension.json',
+    '.qwen/marketplace.json'
+  ];
+  for (const file of manifests) {
     const data = fs.readFileSync(path.join(root, file), 'utf8');
     assert.doesNotThrow(() => JSON.parse(data), `${file} should parse`);
   }

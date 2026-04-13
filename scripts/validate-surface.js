@@ -11,7 +11,6 @@ const requiredPaths = [
   'WORKING-CONTEXT.md',
   'LICENSE',
   'VERSION',
-  '.mcp.json',
   '.claude-plugin/plugin.json',
   '.claude-plugin/README.md',
   '.claude-plugin/PLUGIN_SCHEMA_NOTES.md',
@@ -56,7 +55,6 @@ const requiredPaths = [
   'rules',
   'manifests',
   'schemas',
-  'mcp-configs',
   'docs',
   'examples',
   'docs/examples/project-guidelines-template.md',
@@ -136,7 +134,6 @@ function validateSurface() {
   if (webRuleCount !== 8) throw new Error(`Expected 8 web rules, found ${webRuleCount}`);
 
   JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
-  JSON.parse(fs.readFileSync(path.join(root, '.mcp.json'), 'utf8'));
   const claudePlugin = JSON.parse(fs.readFileSync(path.join(root, '.claude-plugin/plugin.json'), 'utf8'));
   const codexPlugin = JSON.parse(fs.readFileSync(path.join(root, '.codex-plugin/plugin.json'), 'utf8'));
   const opencode = JSON.parse(fs.readFileSync(path.join(root, '.opencode/opencode.json'), 'utf8'));
@@ -144,7 +141,6 @@ function validateSurface() {
   JSON.parse(fs.readFileSync(path.join(root, 'manifests/install-profiles.json'), 'utf8'));
   JSON.parse(fs.readFileSync(path.join(root, 'manifests/install-modules.json'), 'utf8'));
   JSON.parse(fs.readFileSync(path.join(root, 'manifests/install-components.json'), 'utf8'));
-  JSON.parse(fs.readFileSync(path.join(root, 'mcp-configs/mcp-servers.json'), 'utf8'));
   JSON.parse(fs.readFileSync(path.join(root, 'examples/statusline.json'), 'utf8'));
   for (const schema of [
     'schemas/plugin.schema.json',
