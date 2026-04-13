@@ -10,18 +10,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- 55 skills across Python, TypeScript, ML, infrastructure, and web workflows
-- 19 specialized agents with model selection and fallback support
-- 40 workflow commands and shims
-- Multi-platform support: Claude Code, Codex, OpenCode, Gemini CLI
-- MCP server configurations (GitHub, Context7, Exa, Memory, Playwright, Sequential Thinking)
-- Lifecycle automation hooks
-- Language-specific rules (common, Python, TypeScript, web)
-- Install scripts (bash + PowerShell)
-- Smoke tests and surface validation
-- OpenCode TypeScript plugin with custom tools and event hooks
-- Marketplace catalogs for Claude Code and Codex
-- Gemini CLI extension
+- 11 debt analyzer agents (codebase-analyzer, codebase-learner, code-quality-analyzer, test-debt-analyzer, security-debt-analyzer, performance-debt-analyzer, dependency-debt-analyzer, architecture-debt-analyzer, process-debt-analyzer, documentation-debt-analyzer, technical-debt-analyzer)
+- 2 code quality reporting skills (codebase-report, technical-debt-report)
+
+---
+
+## [1.1.0] — 2026-04-13
+
+### Added
+- 33 agents total (added: codebase-analyzer, codebase-learner, code-quality-analyzer, test-debt-analyzer, security-debt-analyzer, performance-debt-analyzer, dependency-debt-analyzer, architecture-debt-analyzer, process-debt-analyzer, documentation-debt-analyzer, technical-debt-analyzer)
+- 59 skills total (added: codebase-report, technical-debt-report)
+- Comprehensive technical debt analysis suite with 11 specialized debt analyzer agents
+- Codebase analysis and learning agents for rapid onboarding
+- Static analysis and code quality metrics enforcement
 
 ---
 

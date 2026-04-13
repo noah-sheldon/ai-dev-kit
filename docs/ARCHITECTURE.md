@@ -18,23 +18,23 @@ AI Dev Kit is a **multi-harness plugin system** that provides a unified develope
 
 ```
 ai-dev-kit/
-├── agents/                    19 specialist agent definitions
+├── agents/                    22 specialist agent definitions
 │   ├── planner.md             Implementation planning
 │   ├── architect.md           System design and tradeoffs
 │   ├── code-reviewer.md       Code quality and regressions
-│   └── ...                    (16 more)
+│   └── ...                    (19 more)
 │
-├── skills/                    55 skill playbooks (shared source of truth)
+├── skills/                    57 skill playbooks (shared source of truth)
 │   ├── tdd-workflow/
 │   │   └── SKILL.md           RED/GREEN/REFACTOR workflow
 │   ├── code-review/
 │   │   └── SKILL.md           Review methodology
-│   └── ...                    (53 more)
+│   └── ...                    (55 more)
 │
-├── commands/                  40 slash-command shims (compatibility layer)
+├── commands/                  41 slash-command shims (compatibility layer)
 │   ├── build-fix.md
 │   ├── code-review.md
-│   └── ...                    (38 more)
+│   └── ...                    (39 more)
 │
 ├── hooks/                     Lifecycle automation
 │   └── hooks.json             Event-triggered automations

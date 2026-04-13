@@ -127,7 +127,7 @@ function validateSurface() {
   const typescriptRuleCount = countFiles('rules/typescript');
   const webRuleCount = countFiles('rules/web');
 
-  if (agentCount !== 19) throw new Error(`Expected 19 agents, found ${agentCount}`);
+  if (agentCount < 20) throw new Error(`Expected at least 20 agents, found ${agentCount}`);
   if (skillCount < 50) throw new Error(`Expected at least 50 skills, found ${skillCount}`);
   if (commandCount < 30) throw new Error(`Expected at least 30 commands, found ${commandCount}`);
   if (commonRuleCount !== 10) throw new Error(`Expected 10 common rules, found ${commonRuleCount}`);

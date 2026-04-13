@@ -1,19 +1,20 @@
 # AI Dev Kit
 
-> Production-ready AI dev workflow scaffold with 55 skills, 19 agents, hooks, rules, and MCP configs.
+> Production-ready AI dev workflow scaffold with 57 skills, 22 agents, hooks, rules, and MCP configs.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/badge/platform-Claude%20Code%20%7C%20Codex%20%7C%20OpenCode%20%7C%20Gemini-lightgrey)](https://noahsheldon.dev)
-[![Skills](https://img.shields.io/badge/skills-55-brightgreen)](./skills/)
-[![Agents](https://img.shields.io/badge/agents-19-blue)](./agents/)
+[![Skills](https://img.shields.io/badge/skills-59-brightgreen)](./skills/)
+[![Agents](https://img.shields.io/badge/agents-33-blue)](./agents/)
+[![Commands](https://img.shields.io/badge/commands-41-orange)](./commands/)
 
 ---
 
 ## What Is This?
 
-AI Dev Kit is a **complete plugin-oriented developer workspace** for AI coding assistants. It ships everything needed to run professional-grade engineering workflows — TDD, code review, security audit, CI/CD, ML pipelines, infrastructure-as-code — across Claude Code, Codex, OpenCode, and Gemini CLI.
+AI Dev Kit is a **complete plugin-oriented developer workspace** for AI coding assistants. It ships everything needed to run professional-grade engineering workflows — TDD, code review, security audit, CI/CD, ML pipelines, infrastructure-as-code, code quality analysis, and debt tracking — across Claude Code, Codex, OpenCode, and Gemini CLI.
 
-Think of it as a **system prompt that scales to 55 specialized skills and 19 domain agents**, with lifecycle hooks, automated validation, and MCP tool integrations.
+Think of it as a **system prompt that scales to 59 specialized skills and 33 domain agents**, with lifecycle hooks, automated validation, and MCP tool integrations.
 
 ---
 
@@ -54,9 +55,9 @@ gemini extensions link .
 
 ```
 ai-dev-kit/
-├── agents/              19 specialized agents (planner, architect, code-reviewer, ...)
-├── skills/              55 skill playbooks (TDD, security, ML, infra, web, data, ...)
-├── commands/            40 workflow commands and shims
+├── agents/              33 specialized agents (planner, architect, code-reviewer, debt analyzers, ...)
+├── skills/              59 skill playbooks (TDD, security, ML, infra, web, data, ...)
+├── commands/            41 workflow commands and shims
 ├── hooks/               lifecycle automation (pre-tool, post-tool, session events)
 ├── rules/               language-specific guidance (common, python, typescript, web)
 ├── manifests/           install manifests for deterministic setup
@@ -75,7 +76,7 @@ ai-dev-kit/
 
 ---
 
-## Agents (19)
+## Agents (33)
 
 | Agent | When to Use |
 |---|---|
@@ -98,13 +99,27 @@ ai-dev-kit/
 | `data-engineer` | ETL, data quality, pipeline architecture |
 | `infra-as-code-specialist` | IaC, CI/CD, deployment pipelines |
 | `observability-telemetry` | Logs, metrics, traces, dashboard setup |
+| `multi-agent-project-manager` | Multi-workflow orchestration, backlog, priority queue (never stops) |
+| `workflow-auditor` | Health checks, stuck detection, quality gate trending, anomaly reporting |
+| `reddit-researcher` | Reddit sentiment, production war stories, community consensus |
+| `codebase-analyzer` | Codebase structure, dependency, and complexity analysis |
+| `codebase-learner` | Learning and understanding unfamiliar codebases |
+| `code-quality-analyzer` | Static analysis, code quality metrics, and standards enforcement |
+| `test-debt-analyzer` | Identifying and tracking test coverage gaps |
+| `security-debt-analyzer` | Security vulnerabilities and debt tracking |
+| `performance-debt-analyzer` | Performance bottlenecks and optimization opportunities |
+| `dependency-debt-analyzer` | Outdated dependencies and upgrade paths |
+| `architecture-debt-analyzer` | Architectural issues and design debt |
+| `process-debt-analyzer` | Workflow inefficiencies and process bottlenecks |
+| `documentation-debt-analyzer` | Documentation gaps and staleness detection |
+| `technical-debt-analyzer` | Overall technical debt assessment and prioritization |
 
 ---
 
-## Skills (55)
+## Skills (59)
 
 ### Core Engineering
-`agentic-engineering` `api-design` `backend-patterns` `frontend-patterns` `frontend-design` `hexagonal-architecture` `coding-standards` `codebase-onboarding`
+`agentic-engineering` `api-design` `api-integrations` `backend-patterns` `frontend-patterns` `frontend-design` `hexagonal-architecture` `coding-standards` `codebase-onboarding`
 
 ### Testing & Quality
 `tdd-workflow` `code-review` `security-review` `security-scan` `e2e-testing` `python-testing` `eval-harness` `verification-loop`
@@ -118,27 +133,34 @@ ai-dev-kit/
 ### Infrastructure
 `aws-devops` `aws-deployment` `docker-patterns` `deployment-patterns` `ci-pipeline` `github-ops` `observability-telemetry` `multi-agent-git-workflow`
 
-### Development Lifecycle
-`api-integrations` `architecture-decision-records` `dmux-workflows` `documentation-lookup` `git-workflow` `skill-authoring`
+### Workflow & Operations
+`architecture-decision-records` `dmux-workflows` `documentation-lookup` `git-workflow` `skill-authoring` `backlog-management` `workflow-status`
+
+### Code Quality & Analysis
+`codebase-report` `technical-debt-report`
 
 ### Specialized
 `wxt-chrome-extension`
 
 ---
 
-## Commands (40)
+## Commands (41)
 
 Build & quality: `build-fix` `code-review` `doctor` `eval` `ml-review` `quality-gate` `review` `review-pr` `test-coverage` `validate` `verify`
 
 Workflow: `checkpoint` `feature-dev` `plan` `project-template` `promote` `resume-session` `save-session` `sessions` `skill-create` `skill-health`
 
-Git & release: `git-agent`
+Git & multi-agent: `git-agent` `multi-agent-status`
 
 DevEx: `context-budget` `context-prune` `install` `uninstall` `update-codemaps` `update-docs`
 
-Hook automation: `hookify-pre-commit` `hookify-pre-push` `hookify-pre-tool-use`
+Hook automation: `hookify` `hookify-configure` `hookify-list` `hookify-help`
+
+Loop & continuous: `loop-start` `loop-status`
 
 ML: `e2e` `launch`
+
+Learning: `learn` `learn-eval`
 
 ---
 

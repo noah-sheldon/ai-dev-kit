@@ -1,39 +1,85 @@
-# Command-Agent Map
+# Command ↔ Agent Map
 
-This repo uses commands as shims and agents/skills as the maintained workflow surface.
-Use this map to keep the command layer and the canonical prompt layer aligned.
+Maps every slash command to its primary agent(s) and the skills it draws on.
 
-| Command | Primary agent(s) | Main skill(s) |
-| --- | --- | --- |
-| `/plan` | planner | `project-capability`, `token-budget-advisor` |
-| `/tdd` | tdd-guide | `tdd-workflow`, `verification-loop` |
-| `/code-review` | code-reviewer | `code-review`, `security-review` |
-| `/verify` | code-reviewer | `verification-loop`, `quality-gate` |
-| `/quality-gate` | security-reviewer | `security-review`, `coding-standards` |
-| `/build-fix` | build-error-resolver | `typescript-patterns`, `python-patterns` |
-| `/e2e` | e2e-runner | `e2e-testing`, `frontend-patterns` |
-| `/refactor-clean` | refactor-cleaner | `coding-standards`, `hexagonal-architecture` |
-| `/update-docs` | doc-updater | `documentation-lookup`, `skill-authoring` |
-| `/update-codemaps` | doc-updater | `codebase-onboarding`, `skill-authoring` |
-| `/learn` | - | `search-first`, `continuous-agent-loop` |
-| `/learn-eval` | - | `eval-harness`, `continuous-learning-v2` |
-| `/eval` | - | `eval-harness`, `token-budget-advisor` |
-| `/skill-create` | - | `skill-authoring`, `coding-standards` |
-| `/skill-health` | - | `skill-authoring`, `verification-loop` |
-| `/checkpoint` | - | `verification-loop` |
-| `/git-agent` | git-agent-coordinator | `multi-agent-git-workflow`, `github-ops` |
-| `/ml-review` | ml-engineer | `mlops-rag`, `openai-api` |
-| `/context-budget` | - | `token-budget-advisor` |
-| `/context-prune` | - | `context-prune`, `token-budget-advisor` |
-| `/review-pr` | code-reviewer | `code-review`, `security-review` |
-| `/feature-dev` | planner, tdd-guide | `project-capability`, `tdd-workflow` |
-| `/sessions` | - | `continuous-agent-loop` |
-| `/save-session` | - | `continuous-agent-loop` |
-| `/resume-session` | - | `continuous-agent-loop` |
-| `/hookify` | - | `github-ops`, `coding-standards` |
+---
 
-Notes:
-- Commands should stay short and delegate the real work to the matching agent or skill.
-- If a command starts growing logic, move that logic into a skill or agent prompt.
-- Treat this doc as the first place to check when you add, rename, or retire a command.
+## Build & Quality
 
+| Command | Primary Agent | Skills Referenced |
+|---|---|---|
+| `/build-fix` | `build-error-resolver` | `python-patterns`, `typescript-patterns` |
+| `/code-review` | `code-reviewer` | `code-review`, `coding-standards` |
+| `/review` | `code-reviewer` | `code-review`, `verification-loop` |
+| `/review-pr` | `code-reviewer` | `code-review`, `github-ops` |
+| `/quality-gate` | `code-reviewer`, `security-reviewer` | `verification-loop`, `security-review` |
+| `/verify` | `code-reviewer` | `verification-loop` |
+| `/test-coverage` | `e2e-runner`, `tdd-guide` | `python-testing`, `e2e-testing`, `eval-harness` |
+| `/validate` | `doc-updater` | `skill-authoring` |
+| `/eval` | `ml-engineer` | `eval-harness`, `token-budget-advisor` |
+| `/ml-review` | `ml-engineer` | `mlops-workflow`, `mlops-rag` |
+
+## Workflow
+
+| Command | Primary Agent | Skills Referenced |
+|---|---|---|
+| `/plan` | `planner` | `architecture-decision-records`, `agentic-engineering` |
+| `/feature-dev` | `planner`, `architect` | `agentic-engineering`, `api-design`, `backend-patterns` |
+| `/checkpoint` | `git-agent-coordinator` | `git-workflow`, `multi-agent-git-workflow` |
+| `/install` | `doc-updater` | `codebase-onboarding` |
+| `/uninstall` | `doc-updater` | `codebase-onboarding` |
+| `/project-template` | `architect` | `architecture-decision-records` |
+| `/promote` | `git-agent-coordinator` | `github-ops`, `multi-agent-git-workflow` |
+| `/resume-session` | `docs-lookup` | `documentation-lookup` |
+| `/save-session` | `docs-lookup` | `documentation-lookup` |
+| `/sessions` | `docs-lookup` | `documentation-lookup` |
+| `/skill-create` | `skill-authorer` | `skill-authoring` |
+| `/skill-health` | `skill-authorer` | `skill-authoring`, `verification-loop` |
+| `/update-docs` | `doc-updater` | `documentation-lookup` |
+| `/update-codemaps` | `doc-updater` | `documentation-lookup`, `context-prune` |
+| `/launch` | `infra-as-code-specialist` | `deployment-patterns`, `ci-pipeline` |
+
+## Git & Multi-Agent
+
+| Command | Primary Agent | Skills Referenced |
+|---|---|---|
+| `/git-agent` | `git-agent-coordinator` | `git-workflow`, `multi-agent-git-workflow`, `github-ops` |
+| `/multi-agent-status` | `multi-agent-project-manager` | `workflow-status`, `backlog-management` |
+
+## Hook Automation
+
+| Command | Primary Agent | Skills Referenced |
+|---|---|---|
+| `/hookify` | `refactor-cleaner` | `ci-pipeline`, `coding-standards` |
+| `/hookify-configure` | `refactor-cleaner` | `ci-pipeline` |
+| `/hookify-list` | `refactor-cleaner` | `ci-pipeline` |
+| `/hookify-help` | `docs-lookup` | `documentation-lookup` |
+
+## Loop & Continuous
+
+| Command | Primary Agent | Skills Referenced |
+|---|---|---|
+| `/loop-start` | `tdd-guide` | `continuous-agent-loop`, `tdd-workflow` |
+| `/loop-status` | `observability-telemetry` | `observability-telemetry`, `context-prune` |
+
+## Context Management
+
+| Command | Primary Agent | Skills Referenced |
+|---|---|---|
+| `/context-budget` | `docs-lookup` | `token-budget-advisor`, `context-prune` |
+| `/context-prune` | `docs-lookup` | `context-prune` |
+
+## Learning & Research
+
+| Command | Primary Agent | Skills Referenced |
+|---|---|---|
+| `/learn` | `docs-lookup` | `documentation-lookup`, `codebase-onboarding` |
+| `/learn-eval` | `ml-engineer`, `eval-harness` | `eval-harness`, `token-budget-advisor` |
+
+## Diagnostics
+
+| Command | Primary Agent | Skills Referenced |
+|---|---|---|
+| `/doctor` | `doc-updater` | `codebase-onboarding` |
+| `/e2e` | `e2e-runner` | `e2e-testing`, `docker-patterns` |
+| `/refactor-clean` | `refactor-cleaner` | `coding-standards`, `python-patterns`, `typescript-patterns` |

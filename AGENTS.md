@@ -3,7 +3,7 @@
 This is a production-ready AI dev kit for Python, TypeScript, web, AI/ML, and
 infrastructure workflows.
 
-**Version:** 1.0.0
+**Version:** 1.1.0
 
 ---
 
@@ -40,6 +40,20 @@ infrastructure workflows.
 | 17 | `data-engineer` | ETL and data quality | Pipeline design, data validation, quality gates |
 | 18 | `infra-as-code-specialist` | IaC and delivery pipelines | Terraform, CI/CD, deployment automation |
 | 19 | `observability-telemetry` | Logs, metrics, traces, dashboards | Setting up monitoring, alerting, and observability |
+| 20 | `multi-agent-project-manager` | Multi-workflow orchestration | Managing concurrent workflows, backlog, priority queue, never stops |
+| 21 | `workflow-auditor` | Health checks and anomaly detection | Stuck workflow detection, quality gate trending, resource leaks |
+| 22 | `reddit-researcher` | Reddit sentiment and experience mining | Real-world user experiences, production war stories, community consensus |
+| 23 | `codebase-analyzer` | Codebase structure and complexity analysis | Understanding codebase architecture, dependency mapping |
+| 24 | `codebase-learner` | Codebase learning specialist | Rapid onboarding to unfamiliar codebases |
+| 25 | `code-quality-analyzer` | Static analysis and quality metrics | Code quality enforcement, standards checking |
+| 26 | `test-debt-analyzer` | Test coverage and debt tracking | Identifying testing gaps, test debt prioritization |
+| 27 | `security-debt-analyzer` | Security vulnerability tracking | Security debt identification, remediation planning |
+| 28 | `performance-debt-analyzer` | Performance bottleneck analysis | Performance debt tracking, optimization opportunities |
+| 29 | `dependency-debt-analyzer` | Dependency health monitoring | Outdated dependencies, upgrade path planning |
+| 30 | `architecture-debt-analyzer` | Architectural debt detection | Design flaws, architectural drift detection |
+| 31 | `process-debt-analyzer` | Workflow inefficiency detection | Process bottlenecks, workflow optimization |
+| 32 | `documentation-debt-analyzer` | Documentation gap detection | Stale docs, missing documentation identification |
+| 33 | `technical-debt-analyzer` | Overall technical debt assessment | Comprehensive debt aggregation and prioritization |
 
 ---
 
@@ -297,9 +311,9 @@ Hooks are lifecycle automations triggered by events:
 
 ```
 ai-dev-kit/
-├── agents/              19 agent definitions (.md files)
-├── skills/              55 skill playbooks (<name>/SKILL.md)
-├── commands/            40 command definitions (.md files)
+├── agents/              33 agent definitions (.md files)
+├── skills/              59 skill playbooks (<name>/SKILL.md)
+├── commands/            41 command definitions (.md files)
 ├── hooks/               lifecycle automation hooks
 ├── rules/               language-specific guidance
 │   ├── common.md        Universal coding standards

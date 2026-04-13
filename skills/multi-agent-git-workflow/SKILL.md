@@ -824,7 +824,11 @@ gh pr merge --squash --delete-branch
 - **deep-research** — in-depth research methodology
 - **exa-search** — neural web search for research
 - **search-first** — search-before-implement pattern
-- **reddit-researcher** — real-world Reddit user experiences and sentiment
+- **technical-debt-analyzer** — comprehensive debt analysis across 8 dimensions
+- **codebase-analyzer** — deep architecture, data flow, and pattern analysis
+- **codebase-learner** — systematic codebase study for onboarding and conventions
+- **codebase-report** — unified codebase analysis report
+- **technical-debt-report** — unified technical debt report with phased remediation
 - **multi-agent-project-manager** — coordinating multiple concurrent workflows
 
 ## Related Agents

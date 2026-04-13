@@ -33,12 +33,14 @@ Workflow E: docs-overhaul        → Pending (waiting for agents)
 
 ### Agent Pool Management
 
-You have a pool of **35+ specialized agents** to allocate:
+You have a pool of **40+ specialized agents** to allocate:
 
 ```
-Research Wave Agents (9):
+Research Wave Agents (14):
   repo-cartographer, dependency-auditor, historical-reviewer, domain-specialists
   web-researcher, community-researcher, reddit-researcher, competitive-analyst, security-scanner
+  technical-debt-analyzer, codebase-analyzer, codebase-learner, code-quality-analyzer,
+  architecture-debt-analyzer, security-debt-analyzer
 
 Planning Wave Agents (1):
   planner
