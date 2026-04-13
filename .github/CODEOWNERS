@@ -1,0 +1,33 @@
+# CODEOWNERS
+# These owners will be requested for review when someone opens a pull request
+# that changes files matched by these patterns.
+
+# Everything goes to the repo owner
+* @noah-sheldon
+
+# Skills
+skills/ @noah-sheldon
+
+# Agents
+agents/ @noah-sheldon
+
+# Commands
+commands/ @noah-sheldon
+
+# Hooks
+hooks/ @noah-sheldon
+
+# Platform manifests
+.claude-plugin/ @noah-sheldon
+.codex-plugin/ @noah-sheldon
+.agents/ @noah-sheldon
+.gemini/ @noah-sheldon
+.github-copilot/ @noah-sheldon
+.qwen/ @noah-sheldon
+gemini-extension.json @noah-sheldon
+qwen-extension.json @noah-sheldon
+
+# CI/CD and scripts
+.github/workflows/ @noah-sheldon
+scripts/ @noah-sheldon
+tests/ @noah-sheldon
