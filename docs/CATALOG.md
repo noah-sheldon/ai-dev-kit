@@ -6,7 +6,7 @@ This repo ships a compact production surface:
 - **59 skills** — task-specific playbooks for TDD, security, code review, ML, infrastructure, data, web, AI workflows, and code quality reporting
 - **41 commands** — slash-command shims for build, workflow, git, hooks, context, learning, and diagnostics
 - **Rules** — common, Python, TypeScript, and web coding standards
-- **Multi-platform surfaces** — Claude Code, Codex, OpenCode, and Gemini CLI plugin manifests
+- **Multi-platform surfaces** — Claude Code, Codex, OpenCode, Gemini CLI, and Copilot CLI plugin manifests
 
 ---
 
@@ -112,6 +112,7 @@ This repo ships a compact production surface:
 | **Codex** | `.codex-plugin/` + `.agents/plugins/` | Plugin Directory (after clone) |
 | **OpenCode** | `.opencode/` + `.opencode/plugins/` | `npm install` + plugin reference |
 | **Gemini CLI** | `.gemini/` | `gemini extensions link .` |
+| **Copilot CLI** | `.github-copilot/` | `copilot plugin install noah-sheldon/ai-dev-kit:.github-copilot` |
 
 ---
 

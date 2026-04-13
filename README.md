@@ -1,9 +1,9 @@
 # AI Dev Kit
 
-> Production-ready AI dev workflow scaffold with 57 skills, 22 agents, hooks, rules, and MCP configs.
+> Production-ready AI dev workflow scaffold with 59 skills, 33 agents, hooks, rules, and MCP configs.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Platform](https://img.shields.io/badge/platform-Claude%20Code%20%7C%20Codex%20%7C%20OpenCode%20%7C%20Gemini-lightgrey)](https://noahsheldon.dev)
+[![Platform](https://img.shields.io/badge/platform-Claude%20Code%20%7C%20Codex%20%7C%20OpenCode%20%7C%20Gemini%20%7C%20Copilot%20CLI-lightgrey)](https://noahsheldon.dev)
 [![Skills](https://img.shields.io/badge/skills-59-brightgreen)](./skills/)
 [![Agents](https://img.shields.io/badge/agents-33-blue)](./agents/)
 [![Commands](https://img.shields.io/badge/commands-41-orange)](./commands/)
@@ -41,6 +41,19 @@ cd .opencode/plugins && npm install && npm run build
 
 ```bash
 gemini extensions link .
+```
+
+### GitHub Copilot CLI
+
+```bash
+copilot plugin marketplace add noah-sheldon/ai-dev-kit
+copilot plugin install ai-dev-kit@ai-dev-kit
+```
+
+Or install directly from the repo:
+
+```bash
+copilot plugin install noah-sheldon/ai-dev-kit:.github-copilot
 ```
 
 ### Manual Install (any harness)
@@ -172,6 +185,7 @@ Learning: `learn` `learn-eval`
 | **Codex** | `.codex-plugin/plugin.json` | `.agents/plugins/marketplace.json` | Plugin Directory (after clone) |
 | **Gemini CLI** | `.gemini/gemini-extension.json` | `.gemini/GEMINI.md` | `gemini extensions link .` |
 | **OpenCode** | `.opencode/opencode.json` | `.opencode/plugins/` (npm) | `npm install opencode-ai-dev-kit` |
+| **Copilot CLI** | `.github-copilot/plugin.json` | `.github-copilot/marketplace.json` | `copilot plugin install noah-sheldon/ai-dev-kit:.github-copilot` |
 | **Cursor** | `.cursor/` | — | Manual context pack |
 
 ---

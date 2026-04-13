@@ -255,9 +255,17 @@ When contributing, ensure your change works across all supported platforms:
 | **Codex** | Shares `skills/` directory — no duplication needed |
 | **OpenCode** | Uses `.opencode/opencode.json` for config |
 | **Gemini CLI** | Uses `.gemini/` for extension surface |
+| **Copilot CLI** | Uses `.github-copilot/` — agents need `.agent.md` symlinks |
 | **Cursor** | Manual context pack — limited support |
 
 Skills in `skills/` are shared between Claude Code and Codex — single source of truth, no duplication.
+
+### Copilot CLI Notes
+
+- Agents must have `.agent.md` symlinks (e.g., `planner.agent.md -> planner.md`)
+- Plugin manifest is `.github-copilot/plugin.json`
+- Marketplace is `.github-copilot/marketplace.json`
+- Symlinks in `.github-copilot/` point to actual content directories
 
 ---
 

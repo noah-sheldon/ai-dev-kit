@@ -271,7 +271,7 @@ Types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `ci`
 
 ### Plugin Architecture
 
-The kit uses a **multi-harness plugin model**. Each platform (Claude Code, Codex, OpenCode, Gemini) has its own manifest in a dot-prefixed directory, all pointing to the same source content:
+The kit uses a **multi-harness plugin model**. Each platform (Claude Code, Codex, OpenCode, Gemini, Copilot CLI) has its own manifest in a dot-prefixed directory, all pointing to the same source content:
 
 ```
 .claude-plugin/    → Claude Code manifest + marketplace
@@ -279,10 +279,16 @@ The kit uses a **multi-harness plugin model**. Each platform (Claude Code, Codex
 .agents/           → Codex marketplace catalog
 .gemini/           → Gemini extension
 .opencode/         → OpenCode config + TypeScript plugin
+.github-copilot/   → Copilot CLI manifest + marketplace
 skills/            → Shared skill definitions (single source of truth)
 agents/            → Shared agent definitions
 commands/          → Shared command definitions
 ```
+
+### Copilot CLI Agent Naming
+
+Copilot CLI requires agents to use `.agent.md` extension. The kit maintains symlinks:
+`planner.agent.md -> planner.md` — so both conventions work from the same source.
 
 ### Skills-First Design
 
