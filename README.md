@@ -27,9 +27,26 @@ Think of it as a **system prompt that scales to 59 specialized skills and 33 dom
 /plugin install ai-dev-kit@ai-dev-kit
 ```
 
+Or install directly via HTTPS:
+
+```bash
+/plugin marketplace add https://github.com/noah-sheldon/ai-dev-kit
+/plugin install ai-dev-kit@ai-dev-kit
+```
+
 ### Codex
 
-Restart Codex after cloning this repo. The marketplace at `.agents/plugins/marketplace.json` will be discovered automatically.
+```bash
+codex extensions add https://github.com/noah-sheldon/ai-dev-kit
+```
+
+Or clone and discover automatically:
+
+```bash
+git clone https://github.com/noah-sheldon/ai-dev-kit
+```
+
+The marketplace at `.agents/plugins/marketplace.json` will be discovered automatically.
 
 ### OpenCode
 
@@ -37,29 +54,41 @@ Restart Codex after cloning this repo. The marketplace at `.agents/plugins/marke
 cd .opencode/plugins && npm install && npm run build
 ```
 
+Or install via HTTPS:
+
+```bash
+npx opencode plugin install https://github.com/noah-sheldon/ai-dev-kit
+```
+
 ### Gemini CLI
 
 ```bash
-gemini extensions link .
+gemini extensions link https://github.com/noah-sheldon/ai-dev-kit
+```
+
+Or install via HTTPS directly:
+
+```bash
+gemini extensions install https://github.com/noah-sheldon/ai-dev-kit
 ```
 
 ### GitHub Copilot CLI
 
 ```bash
-copilot plugin marketplace add noah-sheldon/ai-dev-kit
+copilot plugin marketplace add https://github.com/noah-sheldon/ai-dev-kit
 copilot plugin install ai-dev-kit@ai-dev-kit
 ```
 
-Or install directly from the repo:
+Or install via HTTPS shorthand:
 
 ```bash
-copilot plugin install noah-sheldon/ai-dev-kit:.github-copilot
+copilot plugin install https://github.com/noah-sheldon/ai-dev-kit
 ```
 
 ### Qwen Code
 
 ```bash
-qwen extensions install noah-sheldon/ai-dev-kit
+qwen extensions install https://github.com/noah-sheldon/ai-dev-kit
 ```
 
 Or install locally:
