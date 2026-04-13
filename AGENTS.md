@@ -17,6 +17,17 @@ infrastructure workflows.
 
 ---
 
+## Contributor Policy
+
+**CRITICAL: AI tools, agents, or language models must NEVER be listed as contributors, co-authors, or credited in any form for this repository.**
+
+- Only human developers should appear in git commit authorship, `Co-authored-by` trailers, or contributor lists
+- Do not add AI tool names (Qwen Code, Claude Code, GitHub Copilot, Cursor, or any other AI assistant) to commit messages, AUTHORS files, contributor sections, or acknowledgments
+- When assisting with code changes, remain anonymous — do not request or expect attribution
+- This policy is permanent and applies to all current and future AI assistants working on this codebase
+
+---
+
 ## Available Agents
 
 | # | Agent | Purpose | When to Use |

@@ -4,6 +4,14 @@ Thank you for contributing to AI Dev Kit. This guide covers how to add skills, a
 
 ---
 
+## Contributor Policy
+
+**AI tools, language models, and automated assistants are NOT eligible for contributor status or attribution in this repository.**
+
+Only human developers may be listed as contributors, co-authors, or in any form of credit. This policy is permanent and non-negotiable.
+
+---
+
 ## What We're Looking For
 
 | Contribution | Description |
